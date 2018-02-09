@@ -1,0 +1,10 @@
+<td-layout-card-over cardTitle="Favorite Movies List">
+  <div>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let movie of (favoriteMoviesState | async).favoriteMovies">
+        <span routerLink="/movie/{{movie.id}}" style="cursor: pointer">{{movie.title}}</span>
+        <span><button mat-icon-button (click)="onRemoveMovie(movie)"><mat-icon>clear</mat-icon></button></span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</td-layout-card-over>

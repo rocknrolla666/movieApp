@@ -1,0 +1,28 @@
+<td-layout-card-over cardTitle="{{movie.title}}">
+  <div fxLayout
+       fxLayoutAlign="center"
+       fxLayoutGap="10px">
+    <span>
+      <img *ngIf="poster" src="https://image.tmdb.org/t/p/w500/{{poster}}">
+      <img *ngIf="!poster" src="../../assets/default.jpg">
+    </span>
+
+    <span>
+      <p>{{movie.overview}}</p>
+
+      <mat-card-actions>
+        <app-toggle-favorite [movie]="movie"></app-toggle-favorite>
+      </mat-card-actions>
+    </span>
+  </div>
+
+  <hr>
+
+  <span>Similar movies:</span>
+
+  <ul>
+    <li *ngFor="let recommendedMovie of recommendedMovies">
+      <a routerLink="/movie/{{recommendedMovie.id}}">{{recommendedMovie.title}}</a>
+    </li>
+  </ul>
+</td-layout-card-over>

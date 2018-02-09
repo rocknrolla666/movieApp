@@ -1,0 +1,36 @@
+<td-search-box #searchBox
+               backIcon="arrow_back"
+               class="push-right-sm"
+               placeholder="Search here"
+               (searchDebounce)="search($event, pagingBar)"
+               (clear)="clear(pagingBar)">
+</td-search-box>
+
+<td-paging-bar #pagingBar
+               [pageLinkCount]="pageLinkCount"
+               [pageSize]="pageSize"
+               [total]="(moviesState | async).totalResults"
+               (change)="changePage($event)">
+  {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+</td-paging-bar>
+
+<div class="container" fxLayout="row wrap" fxLayoutAlign="stretch">
+  <mat-card class="example-card" *ngFor="let movie of (moviesState | async).movies" routerLink="movie/{{movie.id}}" style="cursor: pointer">
+    <mat-card-header>
+      <mat-card-title><h4>{{movie.title}}</h4></mat-card-title>
+    </mat-card-header>
+
+    <img *ngIf="movie.poster_path" mat-card-image src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+    <img *ngIf="!movie.poster_path" mat-card-image src="../../assets/default.jpg">
+
+    <mat-card-content>
+      <mat-chip-list>
+        <mat-chip *ngFor="let genre of movie.genres_names">{{ genre }}</mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <app-toggle-favorite [movie]="movie"></app-toggle-favorite>
+    </mat-card-actions>
+  </mat-card>
+</div>

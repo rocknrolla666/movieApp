@@ -1,0 +1,4 @@
+<div>
+  <button mat-button *ngIf="!isFavorite()" (click)="toggle()"><mat-icon>star_border</mat-icon> ADD</button>
+  <button mat-button *ngIf="isFavorite()" (click)="toggle()"><mat-icon>star border</mat-icon> REMOVE</button>
+</div>
