@@ -24,13 +24,13 @@ const initialState: State = {
 
 export function movieReducer(state: State = initialState, action: MoviesActions.MoviesActions) {
   switch (action.type) {
-    case (MoviesActions.SET_MOVIES):
+    case MoviesActions.SET_MOVIES:
       return {
         ...state,
         movies: [...action.payload.movies],
         totalResults: action.payload.totalResults
       };
-    case (MoviesActions.UPDATE_MOVIE):
+    case MoviesActions.UPDATE_MOVIE:
       return {
         ...state,
         movies: state.movies.map(movie => {
@@ -41,7 +41,7 @@ export function movieReducer(state: State = initialState, action: MoviesActions.
           return { ...movie, ...action.payload };
         })
       };
-    case (MoviesActions.SET_PAGER):
+    case MoviesActions.SET_PAGER:
       return {
         ...state,
         pager: {...action.payload}

@@ -12,12 +12,12 @@ const initialState: State = {
 
 export function movieDetailsReducer(state = initialState, action: MovieDetailsActions.MovieDetailsActions) {
   switch (action.type) {
-    case (MovieDetailsActions.SET_MOVIE):
+    case MovieDetailsActions.SET_MOVIE:
       return {
         ...state,
         movieDetails: action.payload
       };
-    case (MovieDetailsActions.SET_RECOMMENDED_MOVIES):
+    case MovieDetailsActions.SET_RECOMMENDED_MOVIES:
       return {
         ...state,
         recommendedMovies: [...action.payload]

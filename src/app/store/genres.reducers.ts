@@ -10,7 +10,7 @@ const initialState = {
 
 export function genresReducers(state = initialState, action: GenresActions.GenresActions) {
   switch (action.type) {
-    case (GenresActions.SET_GENRES):
+    case GenresActions.SET_GENRES:
       return {
         ...state,
         genres: [...action.payload]

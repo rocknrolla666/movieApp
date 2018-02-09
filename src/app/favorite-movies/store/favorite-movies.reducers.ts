@@ -11,17 +11,17 @@ const initialState: State = {
 
 export function favoriteMoviesReducer(state: State = initialState, action: FavoriteMoviesActions.FavoriteMoviesActions) {
   switch (action.type) {
-    case (FavoriteMoviesActions.ADD_MOVIE):
+    case FavoriteMoviesActions.ADD_MOVIE:
       return {
         ...state,
         favoriteMovies: [...state.favoriteMovies, action.payload]
       };
-    case (FavoriteMoviesActions.REMOVE_MOVIE):
+    case FavoriteMoviesActions.REMOVE_MOVIE:
       return {
         ...state,
         favoriteMovies: state.favoriteMovies.filter(favoriteMovie => favoriteMovie.id !== action.payload.id)
       };
-    case (FavoriteMoviesActions.SET_FAVORITE_MOVIES):
+    case FavoriteMoviesActions.SET_FAVORITE_MOVIES:
       return {
         ...state,
         favoriteMovies: [...action.payload]
